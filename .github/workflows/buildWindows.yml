@@ -1,0 +1,29 @@
+name: Build C++ Project
+
+on:
+  push:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Set up MSVC environment
+      uses: microsoft/vs-setup-acquire@v1
+
+    - name: Configure and Build Debug
+      run: |
+        mkdir build-debug
+        cd build-debug
+        cmake -DCMAKE_BUILD_TYPE=Debug ..
+        cmake --build . --config Debug
+
+    - name: Configure and Build Release
+      run: |
+        mkdir build-release
+        cd build-release
+        cmake -DCMAKE_BUILD_TYPE=Release ..
+        cmake --build . --config Release
