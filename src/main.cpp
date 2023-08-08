@@ -1,9 +1,9 @@
-#include "outputManager.hpp"
+#include "IOManager.hpp"
 
 int main()
 {
-	if (tempo::outputManager::initDevices() != 0)
+	if (tempo::IOManager::initDevices() != 0)
 		return -1;
 
-	tempo::outputManager::printDevices();
+	tempo::IOManager::printDevices();
 }

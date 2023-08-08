@@ -1,5 +1,4 @@
 #pragma once
-#include "outputDevice.hpp"
 
 #define EXIT_ON_ERROR(hres)  \
               if (FAILED(hres)) { goto Exit; }
@@ -9,7 +8,7 @@
 
 namespace tempo
 {
-	namespace outputManager
+	namespace IOManager
 	{
 		int initDevices();
 		void printDevices();
