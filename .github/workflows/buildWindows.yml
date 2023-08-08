@@ -11,9 +11,6 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v2
 
-    - name: Set up MSVC environment
-      uses: microsoft/vs-setup-acquire@v1
-
     - name: Configure and Build Debug
       run: |
         mkdir build-debug
