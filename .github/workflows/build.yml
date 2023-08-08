@@ -1,0 +1,24 @@
+name: build
+on:
+  push:
+    tags-ignore: v*.*
+    branches:
+      - '*'
+  pull_request:
+    branches:
+      - '*'
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: configure
+        run: cmake -S . --preset=vs22 -B build
+      - name: configure nopch
+        run: cmake -S . --preset=vs22-nopch -B nopch
+      - name: build release
+        run: cmake --build build --config=Release
+      - name: build debug
+        run: cmake --build build --config=Debug
+      - name: build no pch
+        run: cmake --build nopch --config=Debug
